@@ -3,7 +3,7 @@ import utime
 import urandom
 from toca_musica import we_are_the_champions, duracao_notas, play_musica
 
-pino_buzina = 20
+pino_buzina = 14
 
 # Configurando LEDs
 led_jogo = Pin(18, Pin.OUT) # Led principal que vai acender e apagar para dar inicio ao jogo
