@@ -1,6 +1,7 @@
-from machine import Pin
+from machine import Pin, PWM
 import utime
 import urandom
+from toca_musica import we_are_the_champions, duracao_notas, play_musica
 
 # Configurando LEDs
 led_jogo = Pin(18, Pin.OUT) # Led principal que vai acender e apagar para dar inicio ao jogo
@@ -38,9 +39,10 @@ def grava_tempo(pino):
     elif botao_mais_rapido == botao_vermelho and dif_horarios > 0:
         clique_vermelho = utime.ticks_ms()
         
-    else:
-        # é equivalente à condição: "botao_mais_rapido == botao_azul and dif_horarios > 0"
+    elif botao_mais_rapido == botao_azul and dif_horarios > 0:
         clique_azul = utime.ticks_ms()
+    else:
+        print("Bugou!")
 
 def blink(led, pausa, vezes):
     for i in range(vezes):
@@ -102,7 +104,7 @@ while True:
                 blink(led_vermelho, pausa=0.05, vezes=20)
             else:
                 blink(led_azul, pausa=0.05, vezes=20)
-            
+
     utime.sleep(1)
 
     # Reiniciando variáveis
