@@ -1,3 +1,6 @@
+# Músicas baixadas desse repositório:
+# https://github.com/CytronTechnologies/MakerUno_Examples/blob/master/MakerUno_Melody/MakerUNO_WeAreTheChampions/WeAreTheChampionsVocal/WeAreTheChampionsVocal.ino
+
 from machine import Pin, PWM
 from utime import sleep
 
