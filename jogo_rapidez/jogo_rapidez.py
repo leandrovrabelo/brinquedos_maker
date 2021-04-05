@@ -13,8 +13,8 @@ botao_vermelho = Pin(19, Pin.IN, Pin.PULL_DOWN)
 botao_azul = Pin(15, Pin.IN, Pin.PULL_DOWN)
 
 # Essas variáveis vão registrar a hora que clicou o botão
-clique_vermelho = 0 
-clique_azul = 0
+clique_vermelho = 10_000_000 
+clique_azul = 10_000_000
 
 # Registrador os pontos
 pontos = {"Vermelho":0, "Azul":0}
