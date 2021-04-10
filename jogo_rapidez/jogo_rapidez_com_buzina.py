@@ -103,12 +103,20 @@ while True:
             pontos["Vermelho"] = 0
             pontos["Azul"] = 0
             if key == "Vermelho":
-                blink(led_vermelho, pausa=0.05, vezes=20)
+                
+                play_musica(pino=pino_buzina,
+                            musica=we_are_the_champions,
+                            duracao=duracao_notas,
+                            volume=10000,
+                            led_ganhador=led_vermelho)
             else:
-                blink(led_azul, pausa=0.05, vezes=20)
-            
-            play_musica(pino=pino_buzina, musica=we_are_the_champions,
-                        duracao=duracao_notas, volume=5000)
+                
+                play_musica(pino=pino_buzina,
+                            musica=we_are_the_champions,
+                            duracao=duracao_notas,
+                            volume=10000,
+                            led_ganhador=led_azul)          
+
     utime.sleep(1)
 
     # Reiniciando variáveis
