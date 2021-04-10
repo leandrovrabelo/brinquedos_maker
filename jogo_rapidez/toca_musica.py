@@ -42,8 +42,7 @@ A5 = 880
 AS5 = 932
 B5 = 988
 
-we_are_the_champions = [
-    A4, B4, D5, E5, G5, A5, G5, A5, G5, A5, G5, A5, 0, D5, CS5, D5, CS5, A4, 0,
+we_are_the_champions = [A4, B4, D5, E5, G5, A5, G5, A5, G5, A5, G5, A5, 0, D5, CS5, D5, CS5, A4, 0,
     FS4, B4, FS4, 0, 0, D5, E5, FS5, A5, FS5, B4, CS5, B4, 0, 0, 0, 0, B4, A4, B4,
     A4, G4, 0, G5, FS5, G5, FS5, E5, 0, FS5, 0, D5, G5, FS5, 0, D5, G5, F5, 0, D5,
     G5, F5, 0, D5, 0, C5, A4, D5
@@ -57,13 +56,16 @@ duracao_notas = [
     0.5, 0.5, 0.5, 0.5, 0.25, 0.5, 0.25, 0.5, 0.25, 0.5, 0.25, 0.5, 0.25, 0.5, 0.25,
     0.5, 0.25, 1, 1, 0.25, 0.125, 1]
 
-def play_musica(pino, musica, duracao, volume):
+def play_musica(pino, musica, duracao, volume, led_ganhador):
 
     buzina = PWM(Pin(pino))
     buzina.freq(1000)
     buzina.duty_u16(volume) # de 0 a 65535 = 2**16
 
     for indice, valor in enumerate(musica):
+        estado = led_ganhador.value()
+        led_ganhador.value(not estado)
+        
         if valor == 0:
             sleep(duracao[indice])
             buzina.duty_u16(0)
@@ -71,6 +73,8 @@ def play_musica(pino, musica, duracao, volume):
             buzina.freq(valor)
             buzina.duty_u16(volume)
             sleep(duracao[indice])
-
+    
+    led_ganhador.low()
+    buzina.duty_u16(0)
     buzina.deinit()   
     print("Fim da música")
